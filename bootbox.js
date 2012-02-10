@@ -344,7 +344,7 @@ var bootbox = window.bootbox || (function() {
 
         div.modal({
             "backdrop" : options.backdrop || true,
-            "keyboard" : options.keyboard
+            "keyboard" : options.keyboard || true
         });
 
         return div;
