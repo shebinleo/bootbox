@@ -1,7 +1,7 @@
 var bootbox = window.bootbox || (function() {
 
     var _locale = _defaultLocale = 'en',
-        _animate = true,
+        _animate = false,
         that = {};
 
     /**
@@ -271,7 +271,7 @@ var bootbox = window.bootbox || (function() {
             callbacks[i] = callback;
         }
 
-        var parts = ["<div class='bootbox modal'>"];
+        var parts = ["<div class='bootbox modal " + (options['class']?options['class']:'') + "'>"];
 
         if (options['header']) {
             var closeButton = '';
@@ -336,15 +336,15 @@ var bootbox = window.bootbox || (function() {
                 cb();
             }
         });
-
+		
         if (options.keyboard == null) {
             options.keyboard = (typeof options.onEscape == 'function');
         }
         $("body").append(div);
-
+		
         div.modal({
             "backdrop" : options.backdrop || true,
-            "keyboard" : options.keyboard || true
+            "keyboard" : options.keyboard || true //added || true to make the escape work
         });
 
         return div;
